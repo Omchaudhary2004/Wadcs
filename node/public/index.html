@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Webpage</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    nav {
+      background-color: #333;
+      padding: 15px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 18px;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .hero {
+      background-image: url('https://via.placeholder.com/1500x500');
+      background-size: cover;
+      background-position: center;
+      color: rgb(153, 221, 238);
+      text-align: center;
+      padding: 100px 20px;
+      transition: opacity 0.5s ease;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.5rem;
+      margin-bottom: 40px;
+    }
+    .button {
+      background-color: #ff6347;
+      color: white;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    .button:hover {
+      background-color: #ff4500;
+      transform: translateY(-2px);
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 14px;
+    }
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .hero p {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <div class="hero" id="hero">
+    <h1>Welcome to Our Website!</h1>
+    <p>We offer top-quality services for your needs.</p>
+    <button class="button" onclick="changeContent()">Click Me!</button>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Your Company. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const heroSection = document.getElementById('hero');
+
+    function changeContent() {
+      heroSection.style.opacity = 0;
+      setTimeout(() => {
+        heroSection.innerHTML = `
+          <h1>Thank you for clicking!</h1>
+          <p>We hope you enjoy exploring our website.</p>
+          <button class="button" onclick="goBack()">Go Back</button>
+        `;
+        heroSection.style.opacity = 1;
+      }, 500);
+    }
+
+    function goBack() {
+      heroSection.style.opacity = 0;
+      setTimeout(() => {
+        heroSection.innerHTML = `
+          <h1>Welcome to Our Website!</h1>
+          <p>We offer top-quality services for your needs.</p>
+          <button class="button" onclick="changeContent()">Click Me!</button>
+        `;
+        heroSection.style.opacity = 1;
+      }, 500);
+    }
+  </script>
+</body>
+</html>
