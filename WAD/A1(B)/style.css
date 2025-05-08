@@ -1,0 +1,238 @@
+/* style.css */
+body {
+    background-color: #f5f5f5; /* Light gray background */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.container {
+    background-color: #ffffff; /* White background for the form */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    max-width: 500px;
+    transition: all 0.3s ease;
+    background-color: #e8f4fa; /* Light blue background for the form */
+}
+
+.container:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+h2 {
+    margin-bottom: 30px;
+    color: #2a74d6; /* Changed color to a deeper blue */
+    text-align: center;
+    font-weight: 600;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #333; /* Dark gray for labels */
+    font-size: 16px;
+}
+
+.form-control {
+    border-radius: 8px;
+    box-shadow: none;
+    font-size: 16px;
+    padding: 15px;
+    border: 1px solid #ccc; /* Light gray border */
+    margin-bottom: 20px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #2a74d6; /* Darker blue border on focus */
+    box-shadow: 0 0 8px rgba(42, 116, 214, 0.5);
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+.form-control:disabled {
+    background-color: #f1f1f1;
+    cursor: not-allowed;
+}
+
+.btn {
+    background-color: #2a74d6; /* New button color: deep blue */
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #1c58b3; /* Darker blue on hover */
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    background-color: #164b8b; /* Even darker blue when clicked */
+    transform: translateY(1px);
+}
+
+.footer-text {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin-top: 20px;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    .form-control {
+        font-size: 14px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+/* Add a subtle animation when loading the form */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Custom checkbox style */
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.checkbox-label input {
+    margin-right: 10px;
+}
+
+.checkbox-label input[type="checkbox"] {
+    transform: scale(1.2);
+    margin-left: 5px;
+}
+
+/* Focused input field on mobile devices */
+@media (max-width: 768px) {
+    .form-control:focus {
+        border-color: #1c58b3; /* Dark blue focus on mobile */
+    }
+}
+/*body {
+    background-color: #f5f5f5;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    max-width: 500px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #333;
+    font-size: 16px;
+}
+
+.form-control {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 12px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    width: 100%;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: #aaa;
+}
+
+.btn {
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.footer-text {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #777;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    h2 {
+        font-size: 24px;
+    }
+    .form-control {
+        font-size: 14px;
+    }
+    .btn {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+*/

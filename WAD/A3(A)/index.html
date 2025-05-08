@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Webpage</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+        }
+
+        /* Navigation bar styles */
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero section styles */
+        .hero {
+            background-image: url('https://via.placeholder.com/1500x500');
+            background-size: cover;
+            color: rgb(153, 221, 238);
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+        }
+
+        .button {
+            background-color: #ff6347;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #ff4500;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Welcome to Our Website!</h1>
+        <p>We offer top-quality services for your needs.</p>
+        <button class="button" onclick="changeContent()">Click Me!</button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Your Company. All rights reserved.</p>
+    </footer>
+
+    <!-- Embedded JavaScript -->
+    <script>
+        function changeContent() {
+            const heroSection = document.querySelector('.hero');
+            heroSection.innerHTML = `
+                <h1>Thank you for clicking!</h1>
+                <p>We hope you enjoy exploring our website.</p>
+                <button class="button" onclick="goBack()">Go Back</button>
+            `;
+        }
+
+        function goBack() {
+            window.location.reload();
+        }
+    </script>
+
+</body>
+</html>

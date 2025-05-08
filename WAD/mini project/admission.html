@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission - Modern Education Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #dbeafe;
+            --secondary: #64748b;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --background: #f8fafc;
+            --surface: #ffffff;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --input-border: #cbd5e1;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: var(--shadow-sm);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 4rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        /* Admission Process Section */
+        .process-section {
+            padding: 4rem 0;
+            background-color: var(--surface);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .process-card {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .process-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .process-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .process-card:hover .process-icon {
+            transform: scale(1.1);
+        }
+
+        .process-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .process-card p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Requirements Section */
+        .requirements-section {
+            padding: 4rem 0;
+            background-color: var(--background);
+        }
+
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .requirement-card {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .requirement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .requirement-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .requirement-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 1.5px;
+        }
+
+        .requirement-list {
+            list-style: none;
+        }
+
+        .requirement-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+            transition: background-color 0.3s;
+        }
+
+        .requirement-list li:last-child {
+            border-bottom: none;
+        }
+
+        .requirement-list li:hover {
+            background-color: var(--primary-light);
+        }
+
+        .requirement-icon {
+            color: var(--primary);
+            margin-right: 1rem;
+            margin-top: 0.25rem;
+            transition: transform 0.3s;
+        }
+
+        .requirement-list li:hover .requirement-icon {
+            transform: scale(1.2);
+        }
+
+        /* Application Form Section */
+        .application-section {
+            padding: 4rem 0;
+            background-color: var(--surface);
+        }
+
+        .application-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--surface);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .application-form:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--input-border);
+            border-radius: 0.5rem;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background-color: var(--background);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn:hover::before {
+            transform: translateX(100%);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--surface);
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer p {
+            color: var(--text-light);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .process-grid,
+            .requirements-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">EduPlatform</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="admission.html" class="nav-link active">Admission</a>
+                <a href="courses.html" class="nav-link">Courses</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Start Your Journey</h1>
+            <p>Join our community of learners and take the first step towards your future</p>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Admission Process</h2>
+                <p>Follow these simple steps to begin your educational journey with us</p>
+            </div>
+            <div class="process-grid">
+                <div class="process-card">
+                    <div class="process-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Submit Application</h3>
+                    <p>Complete our online application form with your details</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3>Review Process</h3>
+                    <p>Our team will review your application and documents</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Interview</h3>
+                    <p>Participate in an interview with our admission team</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-icon">
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                    <h3>Receive Decision</h3>
+                    <p>Get notified about your admission status</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="requirements-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Requirements</h2>
+                <p>What you need to prepare for your application</p>
+            </div>
+            <div class="requirements-grid">
+                <div class="requirement-card">
+                    <h3>Academic Requirements</h3>
+                    <ul class="requirement-list">
+                        <li>
+                            <div class="requirement-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div>High school diploma or equivalent</div>
+                        </li>
+                        <li>
+                            <div class="requirement-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div>Official transcripts</div>
+                        </li>
+                        <li>
+                            <div class="requirement-icon">
+                                <i class="fas fa-pen-fancy"></i>
+                            </div>
+                            <div>Personal statement</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="requirement-card">
+                    <h3>Documentation</h3>
+                    <ul class="requirement-list">
+                        <li>
+                            <div class="requirement-icon">
+                                <i class="fas fa-id-card"></i>
+                            </div>
+                            <div>Valid identification</div>
+                        </li>
+                        <li>
+                            <div class="requirement-icon">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <div>Passport-sized photo</div>
+                        </li>
+                        <li>
+                            <div class="requirement-icon">
+                                <i class="fas fa-file-signature"></i>
+                            </div>
+                            <div>Signed application form</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="application-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Application Form</h2>
+                <p>Fill out the form below to start your application process</p>
+            </div>
+            <form class="application-form">
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="program">Program of Interest</label>
+                    <select id="program" class="form-control" required>
+                        <option value="">Select a program</option>
+                        <option value="computer-science">Computer Science</option>
+                        <option value="business">Business Administration</option>
+                        <option value="engineering">Engineering</option>
+                        <option value="design">Design</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Additional Information</label>
+                    <textarea id="message" class="form-control" rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn">Submit Application</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 EduPlatform. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html> 
